@@ -10,8 +10,7 @@ WITH Transaction_Summary AS (
     ss.owner_id,
     CONCAT(uc.first_name, ' ', uc.last_name) AS Name,
     COUNT(ss.id) AS total_transactions, -- Estimated average profit per transaction (0.1% of amount)
-    AVG(ss.confirmed_amount) * 0.001 AS avg_profit_per_transaction,
-    MIN(ss.transaction_date) AS first_transaction_date
+    AVG(ss.confirmed_amount) * 0.001 AS avg_profit_per_transaction
   FROM savings_savingsaccount ss
   JOIN users_customuser uc ON ss.owner_id = uc.id
   GROUP BY ss.owner_id, Name
